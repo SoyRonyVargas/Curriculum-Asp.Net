@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="public\img\" />
+    <Folder Include="Public\img\" />
   </ItemGroup>
 
 </Project>
