@@ -7,7 +7,13 @@ namespace Web_24BM.Controllers
     public class ValidacionesController : Controller
     {
 
-		[HttpGet]
+        private readonly ContactoService contactoService;
+        public ValidacionesController(ContactoService contactoService)
+        {
+            this.contactoService = contactoService;
+        }
+
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -21,24 +27,21 @@ namespace Web_24BM.Controllers
         [HttpPost]
         public IActionResult EnviarFormulario(Curriculum model)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View("Curriculum", model);
+            }
+
             string mensaje = " ";
             
             mensaje = "Datos Correctos";
+            
+            this.contactoService.CrearContacto(model);
+            
+            TempData["Completado"] = "Datos guardados correctamente";
 
-            MayateContext baseDeDatos = new MayateContext();
-
-            Contacto nuevoContacto = new Contacto()
-            {
-                Nombre = model.Nombre,
-                Apellidos = model.Apellidos,
-                Email = model.Email
-			};
-
-            baseDeDatos.Contactos.Add(nuevoContacto);
-
-            baseDeDatos.SaveChanges();
-
-			return View("Curriculum",model) ;
+            return View("Curriculum",model) ;
             
         }
 

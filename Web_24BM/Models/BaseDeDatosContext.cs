@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Web_24BM.Models;
 
-public partial class MayateContext : DbContext
+public partial class BaseDeDatosContext : DbContext
 {
-    public MayateContext()
+    public BaseDeDatosContext()
     {
     }
 
-    public MayateContext(DbContextOptions<MayateContext> options)
+    public BaseDeDatosContext(DbContextOptions<BaseDeDatosContext> options)
         : base(options)
     {
     }
