@@ -27,14 +27,21 @@ namespace Web_24BM.Controllers
         [HttpPost]
         public IActionResult EnviarFormulario(Curriculum model)
         {
-            
+
+            if (!ModelState.IsValid)
+            {
+                return View("Curriculum", model);
+            }
+
             string mensaje = " ";
             
             mensaje = "Datos Correctos";
             
             this.contactoService.CrearContacto(model);
+            
+            TempData["Completado"] = "Datos guardados correctamente";
 
-			return View("Curriculum",model) ;
+            return View("Curriculum",model) ;
             
         }
 
