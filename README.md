@@ -1,6 +1,7 @@
-﻿﻿# Proyecto de Curriculum 24BM
+﻿﻿
+# Proyecto de Curriculum 24BM
 
-##Comandos
+## Comandos
 
 ### Hot Reload en terminal
 
